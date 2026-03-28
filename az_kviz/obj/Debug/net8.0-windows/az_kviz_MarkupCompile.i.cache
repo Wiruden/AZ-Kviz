@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\i22mihoda\source\repos\az_kviz\az_kviz\obj\Debug\net8.0-windows\
+C:\Users\david\source\repos\az_kviz\az_kviz\obj\Debug\net8.0-windows\
 az_kviz
 none
 false
-TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-C:\Users\i22mihoda\source\repos\az_kviz\az_kviz\App.xaml
-11407045341
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP
+C:\Users\david\source\repos\az_kviz\az_kviz\App.xaml
+5183964599
 
-6793526238
-198-2136442823
-MainWindow.xaml;
+10-1265546073
+198-352714763
+Views\AboutWindow.xaml;Views\GameView.xaml;Views\HelpView.xaml;Views\MainWindow.xaml;Views\QuestionDialog.xaml;
 
 False
 

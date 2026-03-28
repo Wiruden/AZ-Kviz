@@ -4,6 +4,42 @@
              xmlns:local="clr-namespace:az_kviz"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="Player1Brush" Color="#FFD62222" />
+        <SolidColorBrush x:Key="Player2Brush" Color="#FF234E9B" />
+        <SolidColorBrush x:Key="AIBrush" Color="#FF234E9B" />
+        <SolidColorBrush x:Key="SelectedBrush" Color="#FFFFD700" />
+        <Style x:Key="HexTileStyle" TargetType="ToggleButton">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Height" Value="58" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid>
+                            <Path Data="M 25 0 L 50 14.5 L 50 43.5 L 25 58 L 0 43.5 L 0 14.5 Z"
+                              Fill="{TemplateBinding Background}"
+                              Stroke="{TemplateBinding BorderBrush}"
+                              StrokeThickness="{TemplateBinding BorderThickness}"
+                              Name="HexPath"
+                              Stretch="Uniform" />
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          RecognizesAccessKey="True" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="HexPath" Property="Fill" Value="{StaticResource Player1Brush}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="HexPath" Property="Stroke" Value="{StaticResource SelectedBrush}" />
+                                <Setter TargetName="HexPath" Property="StrokeThickness" Value="4" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

@@ -1,0 +1,41 @@
+﻿<Window x:Class="az_kviz.Views.HelpView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:az_kviz.Views"
+        mc:Ignorable="d"
+        Title="HelpView" Height="450" Width="800">
+    <Grid Margin="20">
+        <Border BorderBrush="Black" BorderThickness="2" Padding="15">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Top" Text="GAME GUIDELINES" FontSize="24" 
+                           FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+                <Button DockPanel.Dock="Bottom" Content="UNDERSTOOD" Height="40" FontWeight="Bold"
+                        Background="White" BorderBrush="Black" BorderThickness="2" Click="Close_Click"/>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,15">
+                    <StackPanel>
+                        <TextBlock Text="Objective:" FontWeight="Bold" FontSize="16" Margin="0,5"/>
+                        <TextBlock Text="Connect all three sides of the hexagonal board by correctly answering questions and occupying tiles." 
+                                   TextWrapping="Wrap" Margin="0,0,0,15"/>
+
+                        <TextBlock Text="Controls &amp; Shortcuts:" FontWeight="Bold" FontSize="16" Margin="0,5"/>
+                        <ListView BorderThickness="0">
+                            <ListViewItem Content="• Mouse Click: Select a tile on the board."/>
+                            <ListViewItem Content="• Ctrl + N: Start a new game session."/>
+                            <ListViewItem Content="• ESC: Exit the current window or dialog."/>
+                        </ListView>
+
+                        <TextBlock Text="Rules:" FontWeight="Bold" FontSize="16" Margin="0,10,0,5"/>
+                        <TextBlock Text="1. Players take turns choosing a lettered tile." TextWrapping="Wrap" Margin="5,2"/>
+                        <TextBlock Text="2. If you answer correctly, the tile turns your color." TextWrapping="Wrap" Margin="5,2"/>
+                        <TextBlock Text="3. If you miss, your opponent gets a chance to 'steal' the tile." TextWrapping="Wrap" Margin="5,2"/>
+                        <TextBlock Text="4. First to create a continuous path between 3 sides wins!" TextWrapping="Wrap" Margin="5,15,0,0" Foreground="DarkBlue"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

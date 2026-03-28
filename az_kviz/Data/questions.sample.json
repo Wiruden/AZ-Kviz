@@ -1,0 +1,14 @@
+[
+  {
+    "Letter": "A",
+    "Category": "Geografie",
+    "Text": "Jaké je hlavní město České republiky?",
+    "CorrectAnswer": "Praha"
+  },
+  {
+    "Letter": "B",
+    "Category": "Historie",
+    "Text": "Kdo byl prvním československým prezidentem?",
+    "CorrectAnswer": "Masaryk"
+  }
+]
