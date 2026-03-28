@@ -19,7 +19,6 @@
     <Folder Include="Services\UI\" />
     <Folder Include="Services\Storage\" />
     <Folder Include="Services\Quiz\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Resources\Styles\" />
     <Folder Include="Resources\Themes\" />

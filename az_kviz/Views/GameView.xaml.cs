@@ -1,4 +1,5 @@
-﻿using System;
+﻿using az_kviz.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +15,16 @@ using System.Windows.Shapes;
 
 namespace az_kviz.Views
 {
-    /// <summary>
-    /// Interakční logika pro GameView.xaml
-    /// </summary>
-    public partial class GameView : Window
+    public partial class GameView : UserControl
     {
-        public GameView()
+        public GameView() : this(false) // Calls the other constructor with a default value
+        {
+        }
+
+        public GameView(bool isVsAI)
         {
             InitializeComponent();
+            this.DataContext = new GameViewModel(isVsAI);
         }
     }
 }
