@@ -3,24 +3,68 @@
   "WorkspaceRootPath": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\viewmodels\\gameviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\viewmodels\\gameviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\services\\game\\winchecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\services\\game\\winchecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\views\\gameview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\views\\gameview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\models\\game\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\models\\game\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\services\\ui\\themeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\services\\ui\\themeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\viewmodels\\gameviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\viewmodels\\gameviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\views\\gameview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\views\\gameview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\services\\ai\\aiplayerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\services\\ai\\aiplayerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\az_kviz.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\az_kviz.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\services\\validation\\inputvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\services\\validation\\inputvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\services\\game\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\services\\game\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\models\\game\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\models\\game\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\viewmodels\\questionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\viewmodels\\questionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\views\\helpview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\views\\helpview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\data\\questions.sample.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -33,10 +77,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\models\\quiz\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\models\\quiz\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\az_kviz.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|solutionrelative:az_kviz\\az_kviz.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{07CDDDD9-792F-422B-81D7-9C6AB5639FBB}|az_kviz\\az_kviz.csproj|c:\\users\\david\\documents\\github\\az-kviz\\az_kviz\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,23 +98,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "az_kviz.csproj",
-              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\az_kviz.csproj",
-              "RelativeDocumentMoniker": "az_kviz\\az_kviz.csproj",
-              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\az_kviz.csproj",
-              "RelativeToolTip": "az_kviz\\az_kviz.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-28T18:27:18.147Z"
+              "DocumentIndex": 3,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Models\\Game\\Player.cs",
+              "RelativeDocumentMoniker": "az_kviz\\Models\\Game\\Player.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Models\\Game\\Player.cs",
+              "RelativeToolTip": "az_kviz\\Models\\Game\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:09:51.023Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "GameView.xaml",
               "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Views\\GameView.xaml",
               "RelativeDocumentMoniker": "az_kviz\\Views\\GameView.xaml",
@@ -86,56 +127,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Question.cs",
-              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Models\\Quiz\\Question.cs",
-              "RelativeDocumentMoniker": "az_kviz\\Models\\Quiz\\Question.cs",
-              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Models\\Quiz\\Question.cs",
-              "RelativeToolTip": "az_kviz\\Models\\Quiz\\Question.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T10:13:52.255Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GameViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\ViewModels\\GameViewModel.cs",
-              "RelativeDocumentMoniker": "az_kviz\\ViewModels\\GameViewModel.cs",
-              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\ViewModels\\GameViewModel.cs",
-              "RelativeToolTip": "az_kviz\\ViewModels\\GameViewModel.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAYwGsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T10:11:52.571Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\App.xaml",
-              "RelativeDocumentMoniker": "az_kviz\\App.xaml",
-              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\App.xaml",
-              "RelativeToolTip": "az_kviz\\App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-28T18:27:22.246Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "QuestionViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\ViewModels\\QuestionViewModel.cs",
-              "RelativeDocumentMoniker": "az_kviz\\ViewModels\\QuestionViewModel.cs",
-              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\ViewModels\\QuestionViewModel.cs",
-              "RelativeToolTip": "az_kviz\\ViewModels\\QuestionViewModel.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAmwDYAAAAnAAAAAAAAAA==",
+              "Title": "ThemeService.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Services\\UI\\ThemeService.cs",
+              "RelativeDocumentMoniker": "az_kviz\\Services\\UI\\ThemeService.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Services\\UI\\ThemeService.cs",
+              "RelativeToolTip": "az_kviz\\Services\\UI\\ThemeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T10:11:15.412Z"
+              "WhenOpened": "2026-03-29T14:14:10.687Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
+              "Title": "GameView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Views\\GameView.xaml.cs",
+              "RelativeDocumentMoniker": "az_kviz\\Views\\GameView.xaml.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Views\\GameView.xaml.cs",
+              "RelativeToolTip": "az_kviz\\Views\\GameView.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAkwB0AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T13:59:13.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TurnManager.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Services\\Game\\TurnManager.cs",
+              "RelativeDocumentMoniker": "az_kviz\\Services\\Game\\TurnManager.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Services\\Game\\TurnManager.cs",
+              "RelativeToolTip": "az_kviz\\Services\\Game\\TurnManager.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAYwBMAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:12:29.806Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Views\\MainWindow.xaml",
               "RelativeDocumentMoniker": "az_kviz\\Views\\MainWindow.xaml",
@@ -147,7 +177,142 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\ViewModels\\GameViewModel.cs",
+              "RelativeDocumentMoniker": "az_kviz\\ViewModels\\GameViewModel.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\ViewModels\\GameViewModel.cs",
+              "RelativeToolTip": "az_kviz\\ViewModels\\GameViewModel.cs",
+              "ViewState": "AgIAALcAAAAAAAAAAAAUwMAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T10:11:52.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WinChecker.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Services\\Game\\WinChecker.cs",
+              "RelativeDocumentMoniker": "az_kviz\\Services\\Game\\WinChecker.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Services\\Game\\WinChecker.cs",
+              "RelativeToolTip": "az_kviz\\Services\\Game\\WinChecker.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwBIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:59:28.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "az_kviz\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "az_kviz\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAswCQAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:40:58.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "az_kviz.csproj",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\az_kviz.csproj",
+              "RelativeDocumentMoniker": "az_kviz\\az_kviz.csproj",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\az_kviz.csproj",
+              "RelativeToolTip": "az_kviz\\az_kviz.csproj",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAUwA4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-28T18:27:18.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GameState.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Models\\Game\\GameState.cs",
+              "RelativeDocumentMoniker": "az_kviz\\Models\\Game\\GameState.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Models\\Game\\GameState.cs",
+              "RelativeToolTip": "az_kviz\\Models\\Game\\GameState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:10:13.803Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "InputValidationService.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Services\\Validation\\InputValidationService.cs",
+              "RelativeDocumentMoniker": "az_kviz\\Services\\Validation\\InputValidationService.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Services\\Validation\\InputValidationService.cs",
+              "RelativeToolTip": "az_kviz\\Services\\Validation\\InputValidationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:13:44.283Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AiPlayerService.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Services\\AI\\AiPlayerService.cs",
+              "RelativeDocumentMoniker": "az_kviz\\Services\\AI\\AiPlayerService.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Services\\AI\\AiPlayerService.cs",
+              "RelativeToolTip": "az_kviz\\Services\\AI\\AiPlayerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:22:20.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "HelpView.xaml",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Views\\HelpView.xaml",
+              "RelativeDocumentMoniker": "az_kviz\\Views\\HelpView.xaml",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Views\\HelpView.xaml",
+              "RelativeToolTip": "az_kviz\\Views\\HelpView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-29T11:27:24.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Question.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Models\\Quiz\\Question.cs",
+              "RelativeDocumentMoniker": "az_kviz\\Models\\Quiz\\Question.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Models\\Quiz\\Question.cs",
+              "RelativeToolTip": "az_kviz\\Models\\Quiz\\Question.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T10:13:52.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\App.xaml",
+              "RelativeDocumentMoniker": "az_kviz\\App.xaml",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\App.xaml",
+              "RelativeToolTip": "az_kviz\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-28T18:27:22.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "QuestionViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\ViewModels\\QuestionViewModel.cs",
+              "RelativeDocumentMoniker": "az_kviz\\ViewModels\\QuestionViewModel.cs",
+              "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\ViewModels\\QuestionViewModel.cs",
+              "RelativeToolTip": "az_kviz\\ViewModels\\QuestionViewModel.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAkwDQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T10:11:15.412Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "QuestionDialog.xaml",
               "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Views\\QuestionDialog.xaml",
               "RelativeDocumentMoniker": "az_kviz\\Views\\QuestionDialog.xaml",
@@ -158,7 +323,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 16,
               "Title": "questions.sample.json",
               "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Data\\questions.sample.json",
               "RelativeDocumentMoniker": "az_kviz\\Data\\questions.sample.json",
@@ -170,7 +335,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 17,
               "Title": "QuestionFileService.cs",
               "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Services\\Storage\\QuestionFileService.cs",
               "RelativeDocumentMoniker": "az_kviz\\Services\\Storage\\QuestionFileService.cs",
@@ -182,7 +347,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 19,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "az_kviz\\AssemblyInfo.cs",
@@ -194,15 +359,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 21,
               "Title": "AboutWindow.xaml",
               "DocumentMoniker": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Views\\AboutWindow.xaml",
               "RelativeDocumentMoniker": "az_kviz\\Views\\AboutWindow.xaml",
               "ToolTip": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\Views\\AboutWindow.xaml",
               "RelativeToolTip": "az_kviz\\Views\\AboutWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-29T10:07:40.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-29T10:07:40.036Z"
             }
           ]
         }

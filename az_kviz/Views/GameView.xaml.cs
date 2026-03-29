@@ -25,6 +25,11 @@ namespace az_kviz.Views
         {
             InitializeComponent();
             this.DataContext = new GameViewModel(isVsAI);
+            this.Focusable = true;
+            this.Loaded += (s, e) => {
+                var focusResult = this.Focus();
+                System.Diagnostics.Debug.WriteLine("Focus set: " + focusResult);
+            };
         }
     }
 }

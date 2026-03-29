@@ -51,6 +51,11 @@ namespace az_kviz.ViewModels
 
         private void Finish(bool success)
         {
+            if (string.IsNullOrWhiteSpace(UserAnswer))
+            {
+                MessageBox.Show("Please enter an answer before submitting!", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return; // Stop the code here
+            }
             _timer.Stop();
             _onResult?.Invoke(success);
         }

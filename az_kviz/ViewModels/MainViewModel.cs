@@ -7,6 +7,7 @@ namespace az_kviz.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        // This logic is good! It shows the menu buttons only when CurrentView is the MainViewModel itself.
         public Visibility IsMenuVisible => CurrentView == this ? Visibility.Visible : Visibility.Collapsed;
 
         private object _currentView;
@@ -29,14 +30,26 @@ namespace az_kviz.ViewModels
 
         public MainViewModel()
         {
-            // 1. Initialize all commands FIRST
-            StartPvPCommand = new RelayCommand(p => CurrentView = new GameViewModel(false));
+            // Initialize commands
+
+            // Starts a game with AI disabled (false)
+            StartPvPCommand = new RelayCommand(p => {
+                CurrentView = new GameViewModel(false);
+            });
+
+            // Starts a game with AI enabled (true)
+            StartAICommand = new RelayCommand(p =>
+            {
+                var vm = new GameViewModel(true);
+                this.CurrentView = vm;
+            });
+
             StartAICommand = new RelayCommand(p => CurrentView = new GameViewModel(true));
             ShowAboutCommand = new RelayCommand(p => CurrentView = new AboutViewModel());
             ShowMenuCommand = new RelayCommand(p => CurrentView = this);
             QuitCommand = new RelayCommand(p => System.Windows.Application.Current.Shutdown());
 
-            // 2. Set the initial view
+            // Set the initial view to the menu
             CurrentView = this;
         }
 

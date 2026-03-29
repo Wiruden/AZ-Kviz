@@ -1,108 +1,193 @@
-﻿using az_kviz.ViewModels;
+﻿using az_kviz.Services.Game;
+using az_kviz.Services.AI;
+using az_kviz.Services.Validation;
+using az_kviz.Services.Storage;
 using az_kviz.Models.Quiz;
 using az_kviz.Views;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
-using az_kviz.Models;
-using az_kviz.Services.Storage;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System;
+using System.Windows.Controls.Primitives;
+using System.Threading.Tasks;
 using System.Linq;
+using System.Windows.Media;
 
 namespace az_kviz.ViewModels
 {
     public class GameViewModel : INotifyPropertyChanged
     {
-        private int _currentPlayer = 1;
-        public string CurrentPlayerName => _currentPlayer == 1 ? "Player 1 (Red)" : "Player 2 (Blue)";
+        private readonly TurnManager _turnManager = new TurnManager();
+        private readonly AiPlayerService _aiService = new AiPlayerService();
+        private readonly QuestionFileService _questionService = new QuestionFileService();
+        private readonly WinChecker _winChecker = new WinChecker();
 
-        private double _timerValue;
-        public double TimerValue
-        {
-            get => _timerValue;
-            set { _timerValue = value; OnPropertyChanged(); }
-        }
+        private bool _isVsAI;
 
+        // Commands
+        public ICommand SelectTileCommand { get; }
+        public ICommand OpenHelpCommand { get; }
+
+        // Scores
         private int _player1Score;
-        public int Player1Score
-        {
-            get => _player1Score;
-            set { _player1Score = value; OnPropertyChanged(); }
-        }
+        public int Player1Score { get => _player1Score; set { _player1Score = value; OnPropertyChanged(); } }
 
         private int _player2Score;
-        public int Player2Score
-        {
-            get => _player2Score;
-            set { _player2Score = value; OnPropertyChanged(); }
-        }
+        public int Player2Score { get => _player2Score; set { _player2Score = value; OnPropertyChanged(); } }
 
-        public ICommand SelectTileCommand { get; }
-        private readonly QuestionFileService _questionService = new QuestionFileService();
+        // Dynamic Labels
+        public string Player2LabelText => _isVsAI ? "AI (Blue)" : "Player 2 (Blue)";
+
+        public string CurrentPlayerName => _turnManager.CurrentPlayerId == 1
+            ? "Player 1 (Red)"
+            : (_isVsAI ? "AI (Blue)" : "Player 2 (Blue)");
 
         public GameViewModel(bool isVsAI)
         {
-            TimerValue = 100;
+            _isVsAI = isVsAI;
+
             SelectTileCommand = new RelayCommand(param => ExecuteTileSelection(param));
+
+            OpenHelpCommand = new RelayCommand(_ => {
+                var helpWindow = new HelpView();
+                helpWindow.ShowDialog();
+            });
         }
 
         private void ExecuteTileSelection(object parameter)
         {
-            var button = parameter as System.Windows.Controls.Primitives.ToggleButton;
-            if (button == null) return;
+            var button = parameter as ToggleButton;
+            if (button == null || !button.IsEnabled) return;
 
             string letter = button.Content.ToString();
-            Question questionData = _questionService.GetRandomQuestionByLetter(letter);
+            var question = _questionService.GetRandomQuestionByLetter(letter);
 
-            if (questionData == null)
+            if (question == null) return;
+
+            int activePlayer = _turnManager.CurrentPlayerId;
+
+            var qvm = new QuestionViewModel(question.QuestionText, question.Answer, (success) =>
             {
-                MessageBox.Show($"No questions found for: {letter}", "Missing Data");
-                button.IsChecked = false;
-                return;
-            }
-
-            int activePlayer = _currentPlayer;
-
-            var qvm = new QuestionViewModel(questionData.QuestionText, questionData.Answer, (success) =>
-            {
-                System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                Application.Current.Dispatcher.Invoke(async () =>
                 {
-                    foreach (Window win in System.Windows.Application.Current.Windows)
-                    {
-                        if (win is QuestionDialog) win.Close();
-                    }
+                    CloseQuestionDialog();
 
                     if (success)
                     {
                         button.Tag = activePlayer.ToString();
                         button.IsEnabled = false;
-
-                        if (activePlayer == 1) Player1Score += 10; else Player2Score += 10;
+                        UpdateScore(activePlayer);
+                        CheckForWinner(activePlayer);
                     }
                     else
                     {
                         button.IsChecked = false;
-                        MessageBox.Show("Wrong answer or time's up!");
+                        MessageBox.Show("Incorrect answer!");
                     }
 
-                    _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
-                    OnPropertyChanged(nameof(CurrentPlayerName));
+                    _turnManager.SwitchTurn(success);
+                    RefreshUI();
+
+                    // Trigger AI Turn
+                    if (_turnManager.CurrentPlayerId == 2 && _isVsAI)
+                    {
+                        await Task.Delay(1000);
+                        HandleAiTurn();
+                    }
                 });
             });
 
-            var dialog = new QuestionDialog
+            ShowDialog(qvm);
+        }
+
+        private void HandleAiTurn()
+        {
+            var availableButtons = FindVisualChildren<ToggleButton>(Application.Current.MainWindow)
+                .Where(b => b.IsEnabled && b.Tag?.ToString() == "0")
+                .ToList();
+
+            if (availableButtons.Count == 0) return;
+
+            var selectedButton = availableButtons[new Random().Next(availableButtons.Count)];
+            string letter = selectedButton.Content.ToString();
+
+            bool aiCorrect = _aiService.WillAnswerCorrectly();
+
+            if (aiCorrect)
             {
-                DataContext = qvm,
-                Owner = System.Windows.Application.Current.MainWindow
-            };
+                selectedButton.Tag = "2";
+                selectedButton.IsEnabled = false;
+                Player2Score += 10;
+                CheckForWinner(2);
+                MessageBox.Show($"AI chose a tile '{letter}' and answered CORRECTLY!.");
+            }
+            else
+            {
+                selectedButton.IsChecked = false;
+                MessageBox.Show($"AI chose a tile '{letter}', but answered INCORRECTLY!");
+            }
+
+            _turnManager.SwitchTurn(aiCorrect);
+            RefreshUI();
+        }
+
+        private void CheckForWinner(int playerId)
+        {
+            var ownedLetters = FindVisualChildren<ToggleButton>(Application.Current.MainWindow)
+                .Where(b => b.Tag?.ToString() == playerId.ToString())
+                .Select(b => b.Content.ToString())
+                .ToList();
+
+            if (_winChecker.CheckWin(ownedLetters))
+            {
+                string winner = playerId == 1 ? "Player 1 (Red)" : (_isVsAI ? "AI" : "Player 2 (Blue)");
+                MessageBox.Show($"WIN! {winner} Connected all three sides!");
+            }
+        }
+
+        private void UpdateScore(int playerId)
+        {
+            if (playerId == 1) Player1Score += 10;
+            else Player2Score += 10;
+        }
+
+        private void RefreshUI()
+        {
+            OnPropertyChanged(nameof(CurrentPlayerName));
+            OnPropertyChanged(nameof(Player2LabelText));
+        }
+
+        private void ShowDialog(QuestionViewModel qvm)
+        {
+            var dialog = new QuestionDialog { DataContext = qvm, Owner = Application.Current.MainWindow };
             dialog.ShowDialog();
+        }
+
+        private void CloseQuestionDialog()
+        {
+            foreach (Window win in Application.Current.Windows)
+            {
+                if (win is QuestionDialog) win.Close();
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj == null) yield break;
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                var child = VisualTreeHelper.GetChild(depObj, i);
+                if (child is T t) yield return t;
+                foreach (var childOfChild in FindVisualChildren<T>(child)) yield return childOfChild;
+            }
         }
     }
 }
