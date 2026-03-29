@@ -28,8 +28,7 @@
 
                 <DockPanel LastChildFill="False">
                     <Button Content="BACK" DockPanel.Dock="Right" Width="80" Height="30"
-                            Background="White" BorderBrush="Black" BorderThickness="2" 
-                            Click="CloseButton_Click"/>
+                            Background="White" BorderBrush="Black" BorderThickness="2"/>
                 </DockPanel>
             </StackPanel>
         </Border>

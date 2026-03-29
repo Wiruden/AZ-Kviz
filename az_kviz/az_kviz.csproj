@@ -12,16 +12,21 @@
     <Folder Include="Data\" />
     <Folder Include="Models\Game\" />
     <Folder Include="Models\Persistance\" />
-    <Folder Include="Models\Question\" />
+	  <Folder Include="Models\Quiz\" />
     <Folder Include="Services\Game\" />
     <Folder Include="Services\AI\" />
     <Folder Include="Services\Validation\" />
     <Folder Include="Services\UI\" />
-    <Folder Include="Services\Storage\" />
     <Folder Include="Services\Quiz\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Resources\Styles\" />
     <Folder Include="Resources\Themes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\questions.sample.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

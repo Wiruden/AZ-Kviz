@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\david\\source\\repos\\az_kviz\\az_kviz\\az_kviz.csproj",
+      "projectUniqueName": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\az_kviz.csproj",
       "projectName": "az_kviz",
-      "projectPath": "C:\\Users\\david\\source\\repos\\az_kviz\\az_kviz\\az_kviz.csproj",
+      "projectPath": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\az_kviz.csproj",
       "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\david\\source\\repos\\az_kviz\\az_kviz\\obj\\",
+      "outputPath": "C:\\Users\\david\\Documents\\GitHub\\AZ-Kviz\\az_kviz\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
