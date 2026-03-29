@@ -30,11 +30,22 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="HexPath" Property="Fill" Value="{StaticResource Player1Brush}" />
+                                <Setter TargetName="HexPath" Property="Fill" Value="{StaticResource SelectedBrush}" />
                             </Trigger>
+
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="HexPath" Property="Stroke" Value="{StaticResource SelectedBrush}" />
                                 <Setter TargetName="HexPath" Property="StrokeThickness" Value="4" />
+                            </Trigger>
+
+                            <Trigger Property="Tag" Value="1">
+                                <Setter TargetName="HexPath" Property="Fill" Value="#FFD62222"/>
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </Trigger>
+
+                            <Trigger Property="Tag" Value="2">
+                                <Setter TargetName="HexPath" Property="Fill" Value="#FF234E9B"/>
+                                <Setter Property="IsEnabled" Value="False"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

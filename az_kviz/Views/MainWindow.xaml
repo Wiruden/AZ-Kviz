@@ -51,4 +51,11 @@
             </ContentControl>
         </Grid>
     </Grid>
+
+    <Window.InputBindings>
+        <KeyBinding Key="N" Modifiers="Control" Command="{Binding StartPvPCommand}"/>
+        <KeyBinding Key="Q" Modifiers="Control" Command="{Binding QuitCommand}"/>
+    </Window.InputBindings>
 </Window>
+    
+    

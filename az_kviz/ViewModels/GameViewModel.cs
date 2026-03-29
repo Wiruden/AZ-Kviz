@@ -7,17 +7,15 @@ using System.Windows;
 using System.Windows.Input;
 using az_kviz.Models;
 using az_kviz.Services.Storage;
+using System;
+using System.Linq;
 
 namespace az_kviz.ViewModels
 {
     public class GameViewModel : INotifyPropertyChanged
     {
-        private string _currentPlayerName;
-        public string CurrentPlayerName
-        {
-            get => _currentPlayerName;
-            set { _currentPlayerName = value; OnPropertyChanged(); }
-        }
+        private int _currentPlayer = 1;
+        public string CurrentPlayerName => _currentPlayer == 1 ? "Player 1 (Red)" : "Player 2 (Blue)";
 
         private double _timerValue;
         public double TimerValue
@@ -26,41 +24,50 @@ namespace az_kviz.ViewModels
             set { _timerValue = value; OnPropertyChanged(); }
         }
 
-        public int Player1Score { get; set; }
-        public int Player2Score { get; set; }
+        private int _player1Score;
+        public int Player1Score
+        {
+            get => _player1Score;
+            set { _player1Score = value; OnPropertyChanged(); }
+        }
+
+        private int _player2Score;
+        public int Player2Score
+        {
+            get => _player2Score;
+            set { _player2Score = value; OnPropertyChanged(); }
+        }
+
         public ICommand SelectTileCommand { get; }
+        private readonly QuestionFileService _questionService = new QuestionFileService();
 
         public GameViewModel(bool isVsAI)
         {
-            CurrentPlayerName = "David";
             TimerValue = 100;
-
             SelectTileCommand = new RelayCommand(param => ExecuteTileSelection(param));
         }
 
-        private readonly QuestionFileService _questionService = new QuestionFileService();
-
         private void ExecuteTileSelection(object parameter)
         {
-            string letter = parameter?.ToString();
-            if (string.IsNullOrEmpty(letter)) return;
+            var button = parameter as System.Windows.Controls.Primitives.ToggleButton;
+            if (button == null) return;
 
-            // 1. Get the question
+            string letter = button.Content.ToString();
             Question questionData = _questionService.GetRandomQuestionByLetter(letter);
 
             if (questionData == null)
             {
-                MessageBox.Show($"No questions found for the letter: {letter}", "Missing Data");
+                MessageBox.Show($"No questions found for: {letter}", "Missing Data");
+                button.IsChecked = false;
                 return;
             }
 
-            // 2. Setup the QuestionViewModel with the data from JSON
+            int activePlayer = _currentPlayer;
+
             var qvm = new QuestionViewModel(questionData.QuestionText, questionData.Answer, (success) =>
             {
-                // This code runs when the user clicks "SUBMIT" or time runs out
                 System.Windows.Application.Current.Dispatcher.Invoke(() =>
                 {
-                    // Close the popup
                     foreach (Window win in System.Windows.Application.Current.Windows)
                     {
                         if (win is QuestionDialog) win.Close();
@@ -68,17 +75,22 @@ namespace az_kviz.ViewModels
 
                     if (success)
                     {
-                        MessageBox.Show("Correct! The tile is yours.");
-                        // TODO: Add logic here to change the button color to Blue or Orange
+                        button.Tag = activePlayer.ToString();
+                        button.IsEnabled = false;
+
+                        if (activePlayer == 1) Player1Score += 10; else Player2Score += 10;
                     }
                     else
                     {
-                        MessageBox.Show("Incorrect answer or time ran out.");
+                        button.IsChecked = false;
+                        MessageBox.Show("Wrong answer or time's up!");
                     }
+
+                    _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
+                    OnPropertyChanged(nameof(CurrentPlayerName));
                 });
             });
 
-            // 3. Show the Dialog
             var dialog = new QuestionDialog
             {
                 DataContext = qvm,
@@ -89,8 +101,8 @@ namespace az_kviz.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
     }
-
-
 }
