@@ -25,7 +25,7 @@ namespace az_kviz.ViewModels
 
         public AboutViewModel()
         {
-            // Constructor is empty for now
+            
         }
     }
 }

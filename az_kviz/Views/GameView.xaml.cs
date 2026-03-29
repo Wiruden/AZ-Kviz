@@ -17,14 +17,13 @@ namespace az_kviz.Views
 {
     public partial class GameView : UserControl
     {
-        public GameView() : this(false) // Calls the other constructor with a default value
+        public GameView() : this(true)
         {
         }
 
         public GameView(bool isVsAI)
         {
             InitializeComponent();
-            this.DataContext = new GameViewModel(isVsAI);
             this.Focusable = true;
             this.Loaded += (s, e) => {
                 var focusResult = this.Focus();

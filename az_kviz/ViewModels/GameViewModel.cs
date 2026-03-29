@@ -29,6 +29,7 @@ namespace az_kviz.ViewModels
         // Commands
         public ICommand SelectTileCommand { get; }
         public ICommand OpenHelpCommand { get; }
+        public ICommand OpenMenuCommand { get; }
 
         // Scores
         private int _player1Score;
@@ -47,12 +48,18 @@ namespace az_kviz.ViewModels
         public GameViewModel(bool isVsAI)
         {
             _isVsAI = isVsAI;
-
             SelectTileCommand = new RelayCommand(param => ExecuteTileSelection(param));
 
             OpenHelpCommand = new RelayCommand(_ => {
-                var helpWindow = new HelpView();
-                helpWindow.ShowDialog();
+                new HelpView().ShowDialog();
+            });
+
+            OpenMenuCommand = new RelayCommand(_ => {
+                var result = MessageBox.Show("Opravdu menu?", "Menu", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes && Application.Current.MainWindow.DataContext is MainViewModel mvm)
+                {
+                    mvm.CurrentView = mvm;
+                }
             });
         }
 
@@ -63,7 +70,6 @@ namespace az_kviz.ViewModels
 
             string letter = button.Content.ToString();
             var question = _questionService.GetRandomQuestionByLetter(letter);
-
             if (question == null) return;
 
             int activePlayer = _turnManager.CurrentPlayerId;
@@ -84,17 +90,16 @@ namespace az_kviz.ViewModels
                     else
                     {
                         button.IsChecked = false;
-                        MessageBox.Show("Incorrect answer!");
+                        MessageBox.Show("Wrong!");
                     }
 
                     _turnManager.SwitchTurn(success);
                     RefreshUI();
 
-                    // Trigger AI Turn
+                    // START AI SEQUENCE
                     if (_turnManager.CurrentPlayerId == 2 && _isVsAI)
                     {
-                        await Task.Delay(1000);
-                        HandleAiTurn();
+                        await RunAiSequence();
                     }
                 });
             });
@@ -102,16 +107,23 @@ namespace az_kviz.ViewModels
             ShowDialog(qvm);
         }
 
+        private async Task RunAiSequence()
+        {
+            await Task.Delay(1500); // AI "Thinking" delay
+            HandleAiTurn();
+        }
+
         private void HandleAiTurn()
         {
+            // Find all hexagons specifically in the MainWindow
             var availableButtons = FindVisualChildren<ToggleButton>(Application.Current.MainWindow)
-                .Where(b => b.IsEnabled && b.Tag?.ToString() == "0")
+                .Where(b => b.IsEnabled && (b.Tag == null || b.Tag.ToString() == "0"))
                 .ToList();
 
             if (availableButtons.Count == 0) return;
 
-            var selectedButton = availableButtons[new Random().Next(availableButtons.Count)];
-            string letter = selectedButton.Content.ToString();
+            var random = new Random();
+            var selectedButton = availableButtons[random.Next(availableButtons.Count)];
 
             bool aiCorrect = _aiService.WillAnswerCorrectly();
 
@@ -121,29 +133,28 @@ namespace az_kviz.ViewModels
                 selectedButton.IsEnabled = false;
                 Player2Score += 10;
                 CheckForWinner(2);
-                MessageBox.Show($"AI chose a tile '{letter}' and answered CORRECTLY!.");
             }
             else
             {
                 selectedButton.IsChecked = false;
-                MessageBox.Show($"AI chose a tile '{letter}', but answered INCORRECTLY!");
             }
 
             _turnManager.SwitchTurn(aiCorrect);
             RefreshUI();
+            System.Windows.Input.CommandManager.InvalidateRequerySuggested();
         }
 
         private void CheckForWinner(int playerId)
         {
-            var ownedLetters = FindVisualChildren<ToggleButton>(Application.Current.MainWindow)
+            var owned = FindVisualChildren<ToggleButton>(Application.Current.MainWindow)
                 .Where(b => b.Tag?.ToString() == playerId.ToString())
                 .Select(b => b.Content.ToString())
                 .ToList();
 
-            if (_winChecker.CheckWin(ownedLetters))
+            if (_winChecker.CheckWin(owned))
             {
-                string winner = playerId == 1 ? "Player 1 (Red)" : (_isVsAI ? "AI" : "Player 2 (Blue)");
-                MessageBox.Show($"WIN! {winner} Connected all three sides!");
+                string name = (playerId == 2 && _isVsAI) ? "AI" : $"Player {playerId}";
+                MessageBox.Show($"{name} Wins!");
             }
         }
 
@@ -167,17 +178,13 @@ namespace az_kviz.ViewModels
 
         private void CloseQuestionDialog()
         {
-            foreach (Window win in Application.Current.Windows)
-            {
-                if (win is QuestionDialog) win.Close();
-            }
+            foreach (Window win in Application.Current.Windows.OfType<QuestionDialog>().ToList())
+                win.Close();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
+        protected void OnPropertyChanged([CallerMemberName] string name = null) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {

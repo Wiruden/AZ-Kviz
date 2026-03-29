@@ -3,133 +3,106 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:az_kviz.ViewModels"
-             mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="800"
-             Focusable="True" Background="Transparent">
+             mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="900"
+             Focusable="True" Background="#F8F9FA">
+
     <UserControl.InputBindings>
         <KeyBinding Key="H" Modifiers="Ctrl" Command="{Binding OpenHelpCommand}" />
+        <KeyBinding Key="M" Modifiers="Ctrl" Command="{Binding OpenMenuCommand}" />
     </UserControl.InputBindings>
 
-    <Grid Margin="10">
+    <Grid Margin="20">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="240" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Background="#F0F0F0">
-            <TextBlock Text="Current Player" FontWeight="Bold" Margin="0,0,0,5" />
-            <Label Content="{Binding CurrentPlayerName}" FontSize="16" BorderBrush="Black" BorderThickness="1" Margin="0,0,0,20" />
+        <Border Grid.Column="0" Background="White" CornerRadius="20" Padding="20" BorderBrush="#E9ECEF" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Opacity="0.05" ShadowDepth="4"/>
+            </Border.Effect>
 
-            <TextBlock Text="Time Remaining:" Margin="0,0,0,5" />
-            <ProgressBar Minimum="0" Maximum="100" Value="{Binding TimerValue}" Height="20" Foreground="Orange" />
+            <StackPanel>
+                <TextBlock Text="AZ-KVÍZ CONTROL" FontSize="11" FontWeight="Bold" Foreground="#ADB5BD" Margin="0,0,0,15"/>
 
-            <Separator Margin="0,20" />
-            <TextBlock Text="SCORES" FontSize="18" FontWeight="Bold" />
+                <TextBlock Text="Na řadě je:" FontSize="13" Foreground="#495057" Margin="0,0,0,8" />
+                <Border Background="#F1F3F5" CornerRadius="10" Padding="15,10" BorderBrush="#DEE2E6" BorderThickness="1">
+                    <TextBlock Text="{Binding CurrentPlayerName}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#212529"/>
+                </Border>
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Player 1 (Red): " Foreground="#FFD62222" />
-                <TextBlock Text="{Binding Player1Score}" Foreground="#FFD62222" FontWeight="Bold"/>
+                <Separator Margin="0,30" Background="#F1F3F5" />
+
+                <TextBlock Text="SKÓRE" FontSize="11" FontWeight="Bold" Foreground="#ADB5BD" Margin="0,0,0,15"/>
+
+                <Border Background="#FFF5F5" CornerRadius="10" Padding="12" Margin="0,0,0,12" BorderBrush="#FFE3E3" BorderThickness="1">
+                    <DockPanel>
+                        <TextBlock Text="Hráč 1" Foreground="#E03131" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding Player1Score}" Foreground="#E03131" FontWeight="Bold" HorizontalAlignment="Right"/>
+                    </DockPanel>
+                </Border>
+
+                <Border Background="#F7F9FC" CornerRadius="10" Padding="12" BorderBrush="#D0EBFF" BorderThickness="1">
+                    <DockPanel>
+                        <TextBlock Text="{Binding Player2LabelText}" Foreground="#1971C2" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding Player2Score}" Foreground="#1971C2" FontWeight="Bold" HorizontalAlignment="Right"/>
+                    </DockPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Column="1" Margin="20,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,20">
+                <Border Background="#E9ECEF" CornerRadius="6" Padding="10,4" Margin="5,0">
+                    <TextBlock Text="CTRL + H : Nápověda" FontSize="11" Foreground="#495057" FontWeight="Medium"/>
+                </Border>
+                <Border Background="#E9ECEF" CornerRadius="6" Padding="10,4" Margin="5,0">
+                    <TextBlock Text="CTRL + M : Menu" FontSize="11" Foreground="#495057" FontWeight="Medium"/>
+                </Border>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock Text="{Binding Player2LabelText}" Foreground="#FF234E9B" />
-                <TextBlock Text=": " Foreground="#FF234E9B" />
-                <TextBlock Text="{Binding Player2Score}" Foreground="#FF234E9B" FontWeight="Bold"/>
-            </StackPanel>
-        </StackPanel>
+            <Viewbox Grid.Row="1" VerticalAlignment="Center">
+                <Canvas Width="560" Height="400" HorizontalAlignment="Center" IsEnabled="{Binding IsBoardEnabled}">
+                    <ToggleButton Content="A" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="0" Canvas.Left="240" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
 
-        <Canvas Grid.Column="1" Margin="20" Width="550" Height="500" HorizontalAlignment="Center">
-            <ToggleButton Content="A" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="0" Canvas.Left="240" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="B" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="52" Canvas.Left="210" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="C" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="52" Canvas.Left="270" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
 
-            <ToggleButton Content="B" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="52" Canvas.Left="210" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="C" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="52" Canvas.Left="270" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="Č" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="104" Canvas.Left="180" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="D" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="104" Canvas.Left="240" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="E" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="104" Canvas.Left="300" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
 
-            <ToggleButton Content="Č" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="104" Canvas.Left="180" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="D" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="104" Canvas.Left="240" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="E" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="104" Canvas.Left="300" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="F" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="156" Canvas.Left="150" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="G" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="156" Canvas.Left="210" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="H" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="156" Canvas.Left="270" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="CH" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="156" Canvas.Left="330" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
 
-            <ToggleButton Content="F" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="156" Canvas.Left="150" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="G" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="156" Canvas.Left="210" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="H" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="156" Canvas.Left="270" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="CH" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="156" Canvas.Left="330" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="I" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="208" Canvas.Left="120" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="J" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="208" Canvas.Left="180" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="K" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="208" Canvas.Left="240" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="L" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="208" Canvas.Left="300" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="M" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="208" Canvas.Left="360" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
 
-            <ToggleButton Content="I" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="208" Canvas.Left="120" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="J" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="208" Canvas.Left="180" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="K" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="208" Canvas.Left="240" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="L" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="208" Canvas.Left="300" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="M" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="208" Canvas.Left="360" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="N" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="90" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="O" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="150" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="P" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="210" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="Q" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="270" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="R" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="330" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="Ř" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="390" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
 
-            <ToggleButton Content="N" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="90" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="O" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="150" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="P" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="210" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="Q" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="270" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="R" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="330" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="Ř" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="260" Canvas.Left="390" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-
-            <ToggleButton Content="S" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="60" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="Š" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="120" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="T" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="180" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="U" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="240" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="V" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="300" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="Z" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="360" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-            <ToggleButton Content="Ž" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="420" 
-                          Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                          CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
-        </Canvas>
-        <Label Grid.Column="1" Content="Press Ctrl + H for help" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Width="175" Foreground="Black"/>
+                    <ToggleButton Content="S" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="60" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="Š" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="120" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="T" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="180" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="U" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="240" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="V" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="300" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="Z" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="360" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                    <ToggleButton Content="Ž" Tag="0" Style="{StaticResource HexTileStyle}" Canvas.Top="312" Canvas.Left="420" Command="{Binding DataContext.SelectTileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                </Canvas>
+            </Viewbox>
+        </Grid>
     </Grid>
 </UserControl>
