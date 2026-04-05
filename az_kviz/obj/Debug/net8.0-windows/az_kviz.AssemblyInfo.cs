@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("az_kviz")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6e97d08a97f0531d8dc1aa608f3410d2fd2cc59")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0b1977401017f924894b237b997ae60368751ae")]
 [assembly: System.Reflection.AssemblyProductAttribute("az_kviz")]
 [assembly: System.Reflection.AssemblyTitleAttribute("az_kviz")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

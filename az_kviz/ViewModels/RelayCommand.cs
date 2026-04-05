@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Jméno a příjmení: David Mihók
+// Třída: 4.C
+// Předmět: Programování a vývoj aplikací
+// Program: AZ Kvíz
+using System;
 using System.Windows.Input;
 public class RelayCommand : ICommand
 {

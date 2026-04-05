@@ -1,4 +1,8 @@
-﻿using az_kviz.Services.Game;
+﻿// Jméno a příjmení: David Mihók
+// Třída: 4.C
+// Předmět: Programování a vývoj aplikací
+// Program: AZ Kvíz
+using az_kviz.Services.Game;
 using az_kviz.Services.AI;
 using az_kviz.Services.Validation;
 using az_kviz.Services.Storage;

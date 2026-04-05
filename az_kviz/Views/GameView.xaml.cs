@@ -1,4 +1,8 @@
-﻿using az_kviz.ViewModels;
+﻿// Jméno a příjmení: David Mihók
+// Třída: 4.C
+// Předmět: Programování a vývoj aplikací
+// Program: AZ Kvíz
+using az_kviz.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

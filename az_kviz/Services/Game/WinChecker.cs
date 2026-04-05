@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Jméno a příjmení: David Mihók
+// Třída: 4.C
+// Předmět: Programování a vývoj aplikací
+// Program: AZ Kvíz
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,7 +21,7 @@ namespace az_kviz.Services.Game
         /// <summary>
         /// Checks if the player has connected all three sides of the triangle.
         /// </summary>
-        /// <param name="ownedLetters">List of letters currently held by the player (Tag "1" or "2")</param>
+        /// <param>List of letters currently held by the player (Tag "1" or "2")</param>
         /// <returns>True if a winning path exists</returns>
         public bool CheckWin(IEnumerable<string> ownedLetters)
         {

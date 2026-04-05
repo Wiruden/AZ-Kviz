@@ -1,4 +1,8 @@
-﻿namespace az_kviz.Models.Quiz
+﻿// Jméno a příjmení: David Mihók
+// Třída: 4.C
+// Předmět: Programování a vývoj aplikací
+// Program: AZ Kvíz
+namespace az_kviz.Models.Quiz
 {
     public class Question
     {

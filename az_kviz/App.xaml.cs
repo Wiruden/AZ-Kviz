@@ -1,4 +1,8 @@
-﻿using System.Configuration;
+﻿// Jméno a příjmení: David Mihók
+// Třída: 4.C
+// Předmět: Programování a vývoj aplikací
+// Program: AZ Kvíz
+using System.Configuration;
 using System.Data;
 using System.Windows;
 

@@ -1,3 +1,7 @@
+// Jméno a pøíjmení: David Mihók
+// Tøída: 4.C
+// Pøedmìt: Programování a vývoj aplikací
+// Program: AZ Kvíz
 using System.Windows;
 
 [assembly: ThemeInfo(

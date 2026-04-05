@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿// Jméno a příjmení: David Mihók
+// Třída: 4.C
+// Předmět: Programování a vývoj aplikací
+// Program: AZ Kvíz
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
