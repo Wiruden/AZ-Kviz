@@ -16,6 +16,10 @@
         <DataTemplate DataType="{x:Type vm:AboutViewModel}">
             <v:AboutView />
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:HistoryViewModel}">
+            <v:HistoryView />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -28,6 +32,11 @@
                 <Button Content="VS. AI" Command="{Binding StartAICommand}" 
                         Background="White" Foreground="Black" 
                         Height="60" Margin="0,0,0,5" FontSize="24" FontWeight="Bold"/>
+
+                <Button Content="HISTORIE" Command="{Binding OpenHistoryCommand}" 
+                        Background="White" Foreground="Black" 
+                        Height="60" Margin="0,0,0,10" 
+                        FontSize="24" FontWeight="Bold"/>
 
                 <Button Content="QUIT" Command="{Binding QuitCommand}" 
                         Background="White" Foreground="Black" 

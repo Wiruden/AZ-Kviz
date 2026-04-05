@@ -168,15 +168,25 @@ namespace az_kviz.ViewModels
         /// </summary>
         private void CheckForWinner(int playerId)
         {
+            // Vyhledání všech políček, které vlastní daný hráč
             var owned = FindVisualChildren<ToggleButton>(Application.Current.MainWindow)
                 .Where(b => b.Tag?.ToString() == playerId.ToString())
                 .Select(b => b.Content.ToString())
                 .ToList();
 
+            // Kontrola, zda hráč propojil všechny tři strany
             if (_winChecker.CheckWin(owned))
             {
+                // 1. Příprava dat pro historii
                 string winnerName = (playerId == 2 && _isVsAI) ? "AI (PC)" : $"Player {playerId}";
+                string player1 = "Player 1";
+                string player2 = _isVsAI ? "AI (PC)" : "Player 2";
 
+                // 2. ULOŽENÍ DO JSON HISTORIE
+                // Voláme tvou statickou metodu z JsonStorageService
+                JsonStorageService.SaveGameResult(player1, player2, winnerName, _isVsAI);
+
+                // 3. Zobrazení vítězného okna
                 var victoryWindow = new VictoryView(winnerName)
                 {
                     Owner = Application.Current.MainWindow
@@ -184,19 +194,24 @@ namespace az_kviz.ViewModels
 
                 victoryWindow.ShowDialog();
 
+                // 4. Logika po zavření okna (Nová hra vs Návrat do menu)
                 if (victoryWindow.RequestNewGame)
                 {
                     this.ResetBoard();
                     if (Application.Current.MainWindow.DataContext is MainViewModel mvm)
                     {
+                        // Resetujeme view, aby se vyvolal refresh
                         mvm.CurrentView = null;
                         mvm.CurrentView = new GameViewModel(_isVsAI);
                     }
                 }
                 else
                 {
+                    // Návrat do hlavního menu
                     if (Application.Current.MainWindow.DataContext is MainViewModel mvm)
-                        mvm.CurrentView = mvm;
+                    {
+                        mvm.CurrentView = null; // Nastavení na null aktivuje IsMenuVisible v MainViewModelu
+                    }
                 }
             }
         }

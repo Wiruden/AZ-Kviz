@@ -8,7 +8,16 @@ namespace az_kviz.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
         // This logic is good! It shows the menu buttons only when CurrentView is the MainViewModel itself.
-        public Visibility IsMenuVisible => CurrentView == this ? Visibility.Visible : Visibility.Collapsed;
+        private bool _isMenuVisible = true;
+        public bool IsMenuVisible
+        {
+            get => _isMenuVisible;
+            set
+            {
+                _isMenuVisible = value;
+                OnPropertyChanged(); // Tohle řekne WPF: "Ukaž menu!"
+            }
+        }
 
         private object _currentView;
         public object CurrentView
@@ -18,7 +27,10 @@ namespace az_kviz.ViewModels
             {
                 _currentView = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(IsMenuVisible));
+
+                // Pokud nastavíme CurrentView na null, zapneme menu. 
+                // Pokud tam něco je (Historie), menu vypneme.
+                IsMenuVisible = (value == null);
             }
         }
 
@@ -27,6 +39,10 @@ namespace az_kviz.ViewModels
         public ICommand ShowAboutCommand { get; }
         public ICommand QuitCommand { get; }
         public ICommand ShowMenuCommand { get; }
+
+        public ICommand OpenHistoryCommand => new RelayCommand(_ => {
+            CurrentView = new HistoryViewModel();
+        });
 
         public MainViewModel()
         {

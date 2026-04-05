@@ -60,7 +60,7 @@ namespace az_kviz.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/az_kviz;component/views/questiondialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/az_kviz;V1.0.0.0;component/views/questiondialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\QuestionDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
