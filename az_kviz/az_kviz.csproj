@@ -15,7 +15,6 @@
     <Folder Include="Services\Quiz\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Resources\Styles\" />
-    <Folder Include="Resources\Themes\" />
   </ItemGroup>
 
   <ItemGroup>

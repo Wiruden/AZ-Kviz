@@ -2,6 +2,7 @@
 using az_kviz.Services.AI;
 using az_kviz.Services.Validation;
 using az_kviz.Services.Storage;
+using az_kviz.Services.UI;
 using az_kviz.Models.Quiz;
 using az_kviz.Views;
 using System.ComponentModel;
@@ -17,6 +18,9 @@ using System.Windows.Media;
 
 namespace az_kviz.ViewModels
 {
+    /// <summary>
+    /// Core ViewModel for the game logic. Handles turn management, AI sequences, and UI updates.
+    /// </summary>
     public class GameViewModel : INotifyPropertyChanged
     {
         private readonly TurnManager _turnManager = new TurnManager();
@@ -25,11 +29,14 @@ namespace az_kviz.ViewModels
         private readonly WinChecker _winChecker = new WinChecker();
 
         private bool _isVsAI;
+        private bool _isDarkMode = false;
 
         // Commands
         public ICommand SelectTileCommand { get; }
         public ICommand OpenHelpCommand { get; }
         public ICommand OpenMenuCommand { get; }
+        public ICommand ToggleThemeCommand { get; }
+        public ICommand OpenAboutCommand { get; }
 
         // Scores
         private int _player1Score;
@@ -48,14 +55,28 @@ namespace az_kviz.ViewModels
         public GameViewModel(bool isVsAI)
         {
             _isVsAI = isVsAI;
+
             SelectTileCommand = new RelayCommand(param => ExecuteTileSelection(param));
 
             OpenHelpCommand = new RelayCommand(_ => {
                 new HelpView().ShowDialog();
             });
 
+            ToggleThemeCommand = new RelayCommand(_ => {
+                _isDarkMode = !_isDarkMode;
+                ThemeService.ChangeTheme(_isDarkMode);
+            });
+
+            OpenAboutCommand = new RelayCommand(_ => {
+                MessageBox.Show(
+                    "AZ-KVÍZ\nAuthor: David Mihók (4.C)\nTech: C#, WPF, MVVM, JSON",
+                    "About Application",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            });
+
             OpenMenuCommand = new RelayCommand(_ => {
-                var result = MessageBox.Show("Opravdu menu?", "Menu", MessageBoxButton.YesNo);
+                var result = MessageBox.Show("Are you sure you want to return to the menu?", "Menu", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes && Application.Current.MainWindow.DataContext is MainViewModel mvm)
                 {
                     mvm.CurrentView = mvm;
@@ -90,13 +111,12 @@ namespace az_kviz.ViewModels
                     else
                     {
                         button.IsChecked = false;
-                        MessageBox.Show("Wrong!");
+                        MessageBox.Show("Incorrect answer!");
                     }
 
                     _turnManager.SwitchTurn(success);
                     RefreshUI();
 
-                    // START AI SEQUENCE
                     if (_turnManager.CurrentPlayerId == 2 && _isVsAI)
                     {
                         await RunAiSequence();
@@ -109,13 +129,12 @@ namespace az_kviz.ViewModels
 
         private async Task RunAiSequence()
         {
-            await Task.Delay(1500); // AI "Thinking" delay
+            await Task.Delay(1500);
             HandleAiTurn();
         }
 
         private void HandleAiTurn()
         {
-            // Find all hexagons specifically in the MainWindow
             var availableButtons = FindVisualChildren<ToggleButton>(Application.Current.MainWindow)
                 .Where(b => b.IsEnabled && (b.Tag == null || b.Tag.ToString() == "0"))
                 .ToList();
@@ -144,6 +163,9 @@ namespace az_kviz.ViewModels
             System.Windows.Input.CommandManager.InvalidateRequerySuggested();
         }
 
+        /// <summary>
+        /// Validates if a player has connected all three sides of the triangle.
+        /// </summary>
         private void CheckForWinner(int playerId)
         {
             var owned = FindVisualChildren<ToggleButton>(Application.Current.MainWindow)
@@ -153,9 +175,52 @@ namespace az_kviz.ViewModels
 
             if (_winChecker.CheckWin(owned))
             {
-                string name = (playerId == 2 && _isVsAI) ? "AI" : $"Player {playerId}";
-                MessageBox.Show($"{name} Wins!");
+                string winnerName = (playerId == 2 && _isVsAI) ? "AI (PC)" : $"Player {playerId}";
+
+                var victoryWindow = new VictoryView(winnerName)
+                {
+                    Owner = Application.Current.MainWindow
+                };
+
+                victoryWindow.ShowDialog();
+
+                if (victoryWindow.RequestNewGame)
+                {
+                    this.ResetBoard();
+                    if (Application.Current.MainWindow.DataContext is MainViewModel mvm)
+                    {
+                        mvm.CurrentView = null;
+                        mvm.CurrentView = new GameViewModel(_isVsAI);
+                    }
+                }
+                else
+                {
+                    if (Application.Current.MainWindow.DataContext is MainViewModel mvm)
+                        mvm.CurrentView = mvm;
+                }
             }
+        }
+
+        /// <summary>
+        /// Resets the game board to its initial state.
+        /// </summary>
+        public void ResetBoard()
+        {
+            var allButtons = FindVisualChildren<ToggleButton>(Application.Current.MainWindow).ToList();
+
+            foreach (var btn in allButtons)
+            {
+                btn.IsEnabled = true;
+                btn.IsChecked = false;
+                btn.Tag = "0";
+            }
+
+            Player1Score = 0;
+            Player2Score = 0;
+
+            OnPropertyChanged(nameof(Player1Score));
+            OnPropertyChanged(nameof(Player2Score));
+            OnPropertyChanged(nameof(CurrentPlayerName));
         }
 
         private void UpdateScore(int playerId)

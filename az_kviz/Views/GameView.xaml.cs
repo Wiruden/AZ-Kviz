@@ -30,5 +30,6 @@ namespace az_kviz.Views
                 System.Diagnostics.Debug.WriteLine("Focus set: " + focusResult);
             };
         }
+
     }
 }

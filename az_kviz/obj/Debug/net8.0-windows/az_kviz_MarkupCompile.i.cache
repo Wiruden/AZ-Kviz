@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\david\Documents\GitHub\AZ-Kviz\az_kviz\App.xaml
-6-1783791005
+7984837790
 
-25704303093
+261642692558
 198-352714763
-Views\AboutView.xaml;Views\AboutWindow.xaml;Views\GameView.xaml;Views\HelpView.xaml;Views\MainWindow.xaml;Views\QuestionDialog.xaml;
+Views\AboutView.xaml;Views\AboutWindow.xaml;Views\GameView.xaml;Views\HelpView.xaml;Views\MainWindow.xaml;Views\QuestionDialog.xaml;Views\VictoryView.xaml;
 
-False
+True
 

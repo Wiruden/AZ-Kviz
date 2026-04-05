@@ -1,0 +1,20 @@
+﻿<Window x:Class="az_kviz.Views.VictoryView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Victory!" Height="350" Width="450" 
+        WindowStartupLocation="CenterOwner" AllowsTransparency="True" 
+        WindowStyle="None" Background="Transparent">
+    <Border Background="White" CornerRadius="20" BorderBrush="#FFD6A5" BorderThickness="3">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="🏆" FontSize="60" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+            <TextBlock Text="CONGRATULATIONS!" FontSize="24" FontWeight="Bold" Foreground="#495057" HorizontalAlignment="Center"/>
+
+            <TextBlock x:Name="WinnerText" Text="Winner: Player 1" FontSize="20" Margin="0,15" Foreground="#E03131" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+                <Button Content="New Game" Width="120" Height="40" Margin="10" Background="#40C057" Foreground="White" FontWeight="Bold" Click="NewGame_Click"/>
+                <Button Content="Menu" Width="120" Height="40" Margin="10" Background="#228BE6" Foreground="White" FontWeight="Bold" Click="Menu_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>

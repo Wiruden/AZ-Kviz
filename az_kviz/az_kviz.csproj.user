@@ -19,6 +19,9 @@
     <Compile Update="Views\QuestionDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\VictoryView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\AboutView.xaml">
@@ -34,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\QuestionDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\VictoryView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

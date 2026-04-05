@@ -1,20 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace az_kviz.Services.UI
 {
-    public class ThemeService
+    /// <summary>
+    /// Service for handling runtime theme switching between Light and Dark modes.
+    /// </summary>
+    public static class ThemeService
     {
-        public void SetDarkMode(bool isDark)
+        public static void ChangeTheme(bool isDark)
         {
-            var bg = isDark ? System.Windows.Media.Brushes.DimGray : System.Windows.Media.Brushes.White;
-            var fg = isDark ? System.Windows.Media.Brushes.White : System.Windows.Media.Brushes.Black;
+            string themeName = isDark ? "DarkTheme.xaml" : "LightTheme.xaml";
 
-            Application.Current.MainWindow.Background = bg;
+            var dict = new ResourceDictionary
+            {
+                Source = new Uri($"/az_kviz;component/Resources/Themes/{themeName}", UriKind.RelativeOrAbsolute)
+            };
+
+            var appDicts = Application.Current.Resources.MergedDictionaries;
+
+            var oldTheme = appDicts.FirstOrDefault(d => d.Source != null && d.Source.OriginalString.Contains("Theme.xaml"));
+
+            if (oldTheme != null)
+            {
+                appDicts.Remove(oldTheme);
+            }
+            appDicts.Add(dict);
         }
     }
 }

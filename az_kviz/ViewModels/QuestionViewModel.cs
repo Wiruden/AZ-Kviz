@@ -35,13 +35,17 @@ namespace az_kviz.ViewModels
             CorrectAnswer = answer;
             _onResult = onResult;
 
-            SubmitCommand = new RelayCommand(p => Finish(CheckAnswer()));
+            // Manual submit: isTimeout = false
+            SubmitCommand = new RelayCommand(p => Finish(CheckAnswer(), false));
 
-            // Setup 15-second timer
             _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             _timer.Tick += (s, e) => {
                 TimerValue--;
-                if (TimerValue <= 0) Finish(false);
+                if (TimerValue <= 0)
+                {
+                    // Automatic timeout: isTimeout = true, success = false
+                    Finish(false, true);
+                }
             };
             _timer.Start();
         }
@@ -49,14 +53,21 @@ namespace az_kviz.ViewModels
         private bool CheckAnswer() =>
             UserAnswer?.Trim().ToLower() == CorrectAnswer.ToLower();
 
-        private void Finish(bool success)
+        private void Finish(bool success, bool isTimeout = false)
         {
-            if (string.IsNullOrWhiteSpace(UserAnswer))
+            // If it's a manual submit (not a timeout), check for empty input
+            if (!isTimeout && string.IsNullOrWhiteSpace(UserAnswer))
             {
                 MessageBox.Show("Please enter an answer before submitting!", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return; // Stop the code here
+                return;
             }
+
             _timer.Stop();
+            if (isTimeout)
+            {
+                MessageBox.Show("Time is up! The turn passes to your opponent.", "Timeout", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             _onResult?.Invoke(success);
         }
 
